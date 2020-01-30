@@ -180,6 +180,9 @@ def runQuery(date, directory, dsn):
     dept = ''
     sum = 0
     for on, vn, vnm, pc, cn, pn, pd, qty, ttl, ed, od, usr, prtcls in data:
+        if ttl is None:
+            ttl = 0
+            
         if user == '':
             user = usr
             userTotal += float(ttl)
