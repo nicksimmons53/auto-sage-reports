@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['ExecuteQuery.py'],
-             pathex=['/Users/nick/Projects/auto-sage-reports'],
+             pathex=['C:\\Users\\Nicks\\Desktop\\FILES NEEDED\\MC Surfaces Tech\\Scripts\\RepRunner - Lisa\\Queries'],
              binaries=[],
              datas=[],
              hiddenimports=[],
