@@ -16,25 +16,25 @@ def runQuery(date, directory, dsn):
     cursor = conn.cursor( )
     sql = """
         select
-        	[MC Surfaces, Inc].[dbo].tkflin.prtnum,
-        	[MC Surfaces, Inc].[dbo].tkfprt.prtnme,
-        	[MC Surfaces, Inc].[dbo].tkflin.extqty
-        	from [MC Surfaces, Inc].[dbo].tkflin
-        		left join [MC Surfaces, Inc].[dbo].ptotkf
-        			on [MC Surfaces, Inc].[dbo].tkflin.recnum = [MC Surfaces, Inc].[dbo].ptotkf.recnum
-        		left join [MC Surfaces, Inc].[dbo].actrec
-        			on [MC Surfaces, Inc].[dbo].ptotkf.recnum = [MC Surfaces, Inc].[dbo].actrec.recnum
-        		left join [MC Surfaces, Inc].[dbo].reccln
-        			on [MC Surfaces, Inc].[dbo].actrec.clnnum = [MC Surfaces, Inc].[dbo].reccln.recnum
-        		left join [MC Surfaces, Inc].[dbo].tkfprt
-        			on [MC Surfaces, Inc].[dbo].tkflin.prtnum = [MC Surfaces, Inc].[dbo].tkfprt.recnum
-        		left join [MC Surfaces, Inc].[dbo].prtcls
-        			on [MC Surfaces, Inc].[dbo].tkfprt.prtcls = [MC Surfaces, Inc].[dbo].prtcls.recnum
+        	[MCS INC].[dbo].tkflin.prtnum,
+        	[MCS INC].[dbo].tkfprt.prtnme,
+        	[MCS INC].[dbo].tkflin.extqty
+        	from [MCS INC].[dbo].tkflin
+        		left join [MCS INC].[dbo].ptotkf
+        			on [MCS INC].[dbo].tkflin.recnum = [MCS INC].[dbo].ptotkf.recnum
+        		left join [MCS INC].[dbo].actrec
+        			on [MCS INC].[dbo].ptotkf.recnum = [MCS INC].[dbo].actrec.recnum
+        		left join [MCS INC].[dbo].reccln
+        			on [MCS INC].[dbo].actrec.clnnum = [MCS INC].[dbo].reccln.recnum
+        		left join [MCS INC].[dbo].tkfprt
+        			on [MCS INC].[dbo].tkflin.prtnum = [MCS INC].[dbo].tkfprt.recnum
+        		left join [MCS INC].[dbo].prtcls
+        			on [MCS INC].[dbo].tkfprt.prtcls = [MCS INC].[dbo].prtcls.recnum
         		where
-        			[MC Surfaces, Inc].[dbo].prtcls.recnum = 1100
-        			and [MC Surfaces, Inc].[dbo].actrec.biddte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        			and [MC Surfaces, Inc].[dbo].actrec.biddte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
-        	order by [MC Surfaces, Inc].[dbo].tkfprt.recnum, [MC Surfaces, Inc].[dbo].ptotkf.recnum;
+        			[MCS INC].[dbo].prtcls.recnum = 1100
+        			and [MCS INC].[dbo].actrec.biddte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        			and [MCS INC].[dbo].actrec.biddte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
+        	order by [MCS INC].[dbo].tkfprt.recnum, [MCS INC].[dbo].ptotkf.recnum;
     """
     cursor.execute(sql)
     tuples = list(cursor.fetchall( ))

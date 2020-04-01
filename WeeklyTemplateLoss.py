@@ -16,29 +16,29 @@ def runQuery(date, directory, dsn):
     cursor = conn.cursor( )
     sql = """
         select
-        	[MC Surfaces, Inc].[dbo].acrinv.invnum,
-        	[MC Surfaces, Inc].[dbo].acrinv.invdte,
-        	[MC Surfaces, Inc].[dbo].acrinv.jobnum,
-        	[MC Surfaces, Inc].[dbo].actrec.jobnme,
-        	[MC Surfaces, Inc].[dbo].actrec.dptmnt,
-        	[MC Surfaces, Inc].[dbo].dptmnt.dptnme,
-        	[MC Surfaces, Inc].[dbo].acrinv.dscrpt,
-        	[MC Surfaces, Inc].[dbo].acrinv.usrdf2,
-        	[MC Surfaces, Inc].[dbo].acrinv.invtyp,
-        	[MC Surfaces, Inc].[dbo].acrinv.status,
-        	[MC Surfaces, Inc].[dbo].acrinv.invttl
-        	from [MC Surfaces, Inc].[dbo].acrinv
-        		left join [MC Surfaces, Inc].[dbo].actrec
-        			on [MC Surfaces, Inc].[dbo].acrinv.jobnum = [MC Surfaces, Inc].[dbo].actrec.recnum
-        		left join [MC Surfaces, Inc].[dbo].dptmnt
-        			on [MC Surfaces, Inc].[dbo].actrec.dptmnt = [MC Surfaces, Inc].[dbo].dptmnt.recnum
+        	[MCS INC].[dbo].acrinv.invnum,
+        	[MCS INC].[dbo].acrinv.invdte,
+        	[MCS INC].[dbo].acrinv.jobnum,
+        	[MCS INC].[dbo].actrec.jobnme,
+        	[MCS INC].[dbo].actrec.dptmnt,
+        	[MCS INC].[dbo].dptmnt.dptnme,
+        	[MCS INC].[dbo].acrinv.dscrpt,
+        	[MCS INC].[dbo].acrinv.usrdf2,
+        	[MCS INC].[dbo].acrinv.invtyp,
+        	[MCS INC].[dbo].acrinv.status,
+        	[MCS INC].[dbo].acrinv.invttl
+        	from [MCS INC].[dbo].acrinv
+        		left join [MCS INC].[dbo].actrec
+        			on [MCS INC].[dbo].acrinv.jobnum = [MCS INC].[dbo].actrec.recnum
+        		left join [MCS INC].[dbo].dptmnt
+        			on [MCS INC].[dbo].actrec.dptmnt = [MCS INC].[dbo].dptmnt.recnum
         		where
-        			[MC Surfaces, Inc].[dbo].acrinv.dscrpt = 'TEMPLATE ERROR- LOSS'
-        				and [MC Surfaces, Inc].[dbo].acrinv.invdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        				and [MC Surfaces, Inc].[dbo].acrinv.invdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
-        			or [MC Surfaces, Inc].[dbo].acrinv.dscrpt = '2ND TIME TEMPLATE ERROR- LOSS'
-        				and [MC Surfaces, Inc].[dbo].acrinv.invdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        				and [MC Surfaces, Inc].[dbo].acrinv.invdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date);
+        			[MCS INC].[dbo].acrinv.dscrpt = 'TEMPLATE ERROR- LOSS'
+        				and [MCS INC].[dbo].acrinv.invdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        				and [MCS INC].[dbo].acrinv.invdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
+        			or [MCS INC].[dbo].acrinv.dscrpt = '2ND TIME TEMPLATE ERROR- LOSS'
+        				and [MCS INC].[dbo].acrinv.invdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        				and [MCS INC].[dbo].acrinv.invdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date);
     """
     cursor.execute(sql)
     tuples = list(cursor.fetchall( ))

@@ -17,37 +17,37 @@ def runQuery(date, directory, dsn):
     cursor = conn.cursor( )
     sql = """
         select
-        	[MC Surfaces, Inc].[dbo].srvsch.vndnum,
-        	[MC Surfaces, Inc].[dbo].actpay.vndnme,
-        	[MC Surfaces, Inc].[dbo].srvinv.recnum,
-        	[MC Surfaces, Inc].[dbo].srvinv.schdte,
-        	[MC Surfaces, Inc].[dbo].srvinv.entdte,
-        	[MC Surfaces, Inc].[dbo].srvinv.invtyp,
-        	[MC Surfaces, Inc].[dbo].srvtyp.typnme,
-        	[MC Surfaces, Inc].[dbo].reccln.clnnme,
-        	[MC Surfaces, Inc].[dbo].srvinv.jobnum,
-        	[MC Surfaces, Inc].[dbo].actrec.jobnme,
-        	[MC Surfaces, Inc].[dbo].srvinv.dscrpt,
-        	[MC Surfaces, Inc].[dbo].srvinv.ntetxt,
-        	[MC Surfaces, Inc].[dbo].srvinv.usrnme,
-        	[MC Surfaces, Inc].[dbo].actrec.dptmnt
-        	from [MC Surfaces, Inc].[dbo].srvinv
-        		left join [MC Surfaces, Inc].[dbo].reccln
-        			on [MC Surfaces, Inc].[dbo].srvinv.clnnum = [MC Surfaces, Inc].[dbo].reccln.recnum
-        		left join [MC Surfaces, Inc].[dbo].srvtyp
-        			on [MC Surfaces, Inc].[dbo].srvinv.invtyp = [MC Surfaces, Inc].[dbo].srvtyp.recnum
-        		left join [MC Surfaces, Inc].[dbo].srvsch
-        			on [MC Surfaces, Inc].[dbo].srvinv.recnum = [MC Surfaces, Inc].[dbo].srvsch.recnum
-        		left join [MC Surfaces, Inc].[dbo].actpay
-        			on [MC Surfaces, Inc].[dbo].srvsch.vndnum = [MC Surfaces, Inc].[dbo].actpay.recnum
-        		left join [MC Surfaces, Inc].[dbo].actrec
-        			on [MC Surfaces, Inc].[dbo].srvinv.jobnum = [MC Surfaces, Inc].[dbo].actrec.recnum
+        	[MCS INC].[dbo].srvsch.vndnum,
+        	[MCS INC].[dbo].actpay.vndnme,
+        	[MCS INC].[dbo].srvinv.recnum,
+        	[MCS INC].[dbo].srvinv.schdte,
+        	[MCS INC].[dbo].srvinv.entdte,
+        	[MCS INC].[dbo].srvinv.invtyp,
+        	[MCS INC].[dbo].srvtyp.typnme,
+        	[MCS INC].[dbo].reccln.clnnme,
+        	[MCS INC].[dbo].srvinv.jobnum,
+        	[MCS INC].[dbo].actrec.jobnme,
+        	[MCS INC].[dbo].srvinv.dscrpt,
+        	[MCS INC].[dbo].srvinv.ntetxt,
+        	[MCS INC].[dbo].srvinv.usrnme,
+        	[MCS INC].[dbo].actrec.dptmnt
+        	from [MCS INC].[dbo].srvinv
+        		left join [MCS INC].[dbo].reccln
+        			on [MCS INC].[dbo].srvinv.clnnum = [MCS INC].[dbo].reccln.recnum
+        		left join [MCS INC].[dbo].srvtyp
+        			on [MCS INC].[dbo].srvinv.invtyp = [MCS INC].[dbo].srvtyp.recnum
+        		left join [MCS INC].[dbo].srvsch
+        			on [MCS INC].[dbo].srvinv.recnum = [MCS INC].[dbo].srvsch.recnum
+        		left join [MCS INC].[dbo].actpay
+        			on [MCS INC].[dbo].srvsch.vndnum = [MCS INC].[dbo].actpay.recnum
+        		left join [MCS INC].[dbo].actrec
+        			on [MCS INC].[dbo].srvinv.jobnum = [MCS INC].[dbo].actrec.recnum
         		where
-        			[MC Surfaces, Inc].[dbo].actrec.dptmnt = 200
-        			and [MC Surfaces, Inc].[dbo].srvinv.invtyp != 2
-        			and [MC Surfaces, Inc].[dbo].srvsch.schdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        			and [MC Surfaces, Inc].[dbo].srvsch.schdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
-        		order by [MC Surfaces, Inc].[dbo].srvinv.dscrpt, [MC Surfaces, Inc].[dbo].actpay.vndnme, [MC Surfaces, Inc].[dbo].srvinv.schdte;
+        			[MCS INC].[dbo].actrec.dptmnt = 200
+        			and [MCS INC].[dbo].srvinv.invtyp != 2
+        			and [MCS INC].[dbo].srvsch.schdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        			and [MCS INC].[dbo].srvsch.schdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
+        		order by [MCS INC].[dbo].srvinv.dscrpt, [MCS INC].[dbo].actpay.vndnme, [MCS INC].[dbo].srvinv.schdte;
     """
 
     cursor.execute(sql)

@@ -17,33 +17,33 @@ def runQuery(date, directory, dsn):
     cursor = conn.cursor( )
     sql = """
         select
-        	[MC Surfaces, Inc].[dbo].pchord.odrdby,
-        	[MC Surfaces, Inc].[dbo].employ.fulfst,
-        	[MC Surfaces, Inc].[dbo].actrec.sprvsr,
+        	[MCS INC].[dbo].pchord.odrdby,
+        	[MCS INC].[dbo].employ.fulfst,
+        	[MCS INC].[dbo].actrec.sprvsr,
         	fieldRep.fulfst,
-        	[MC Surfaces, Inc].[dbo].pchord.dscrpt,
-        	[MC Surfaces, Inc].[dbo].pchord.orddte,
-        	[MC Surfaces, Inc].[dbo].actpay.vndnme,
-        	[MC Surfaces, Inc].[dbo].pchord.ordnum,
-        	[MC Surfaces, Inc].[dbo].pchord.jobnum,
-            [MC Surfaces, Inc].[dbo].actrec.jobnme,
-        	[MC Surfaces, Inc].[dbo].pchord.pchttl,
-        	[MC Surfaces, Inc].[dbo].pchord.ordtyp,
-        	[MC Surfaces, Inc].[dbo].pchord.ntetxt
-        	from [MC Surfaces, Inc].[dbo].pchord
-        		left join [MC Surfaces, Inc].[dbo].employ
-        			on [MC Surfaces, Inc].[dbo].pchord.odrdby = [MC Surfaces, Inc].[dbo].employ.recnum
-        		left join [MC Surfaces, Inc].[dbo].actpay
-        			on [MC Surfaces, Inc].[dbo].pchord.vndnum = [MC Surfaces, Inc].[dbo].actpay.recnum
-        		left join [MC Surfaces, Inc].[dbo].actrec
-        			on [MC Surfaces, Inc].[dbo].pchord.jobnum = [MC Surfaces, Inc].[dbo].actrec.recnum
-        		left join [MC Surfaces, Inc].[dbo].employ as fieldRep
-        			on [MC Surfaces, Inc].[dbo].actrec.sprvsr = fieldRep.recnum
+        	[MCS INC].[dbo].pchord.dscrpt,
+        	[MCS INC].[dbo].pchord.orddte,
+        	[MCS INC].[dbo].actpay.vndnme,
+        	[MCS INC].[dbo].pchord.ordnum,
+        	[MCS INC].[dbo].pchord.jobnum,
+            [MCS INC].[dbo].actrec.jobnme,
+        	[MCS INC].[dbo].pchord.pchttl,
+        	[MCS INC].[dbo].pchord.ordtyp,
+        	[MCS INC].[dbo].pchord.ntetxt
+        	from [MCS INC].[dbo].pchord
+        		left join [MCS INC].[dbo].employ
+        			on [MCS INC].[dbo].pchord.odrdby = [MCS INC].[dbo].employ.recnum
+        		left join [MCS INC].[dbo].actpay
+        			on [MCS INC].[dbo].pchord.vndnum = [MCS INC].[dbo].actpay.recnum
+        		left join [MCS INC].[dbo].actrec
+        			on [MCS INC].[dbo].pchord.jobnum = [MCS INC].[dbo].actrec.recnum
+        		left join [MCS INC].[dbo].employ as fieldRep
+        			on [MCS INC].[dbo].actrec.sprvsr = fieldRep.recnum
         		where
-        			[MC Surfaces, Inc].[dbo].pchord.ordtyp = 2
-        			and [MC Surfaces, Inc].[dbo].pchord.orddte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        			and [MC Surfaces, Inc].[dbo].pchord.orddte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
-                order by [MC Surfaces, Inc].[dbo].pchord.odrdby, [MC Surfaces, Inc].[dbo].actrec.sprvsr, [MC Surfaces, Inc].[dbo].pchord.dscrpt;
+        			[MCS INC].[dbo].pchord.ordtyp = 2
+        			and [MCS INC].[dbo].pchord.orddte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        			and [MCS INC].[dbo].pchord.orddte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
+                order by [MCS INC].[dbo].pchord.odrdby, [MCS INC].[dbo].actrec.sprvsr, [MCS INC].[dbo].pchord.dscrpt;
     """
     cursor.execute(sql)
     tuples = list(cursor.fetchall( ))

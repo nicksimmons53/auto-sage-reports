@@ -19,29 +19,29 @@ def runQuery(directory, dsn):
     cursor = conn.cursor( )
     sql = """
         select
-        	[MC Surfaces, Inc].[dbo].actrec.dptmnt,
-        	[MC Surfaces, Inc].[dbo].dptmnt.dptnme,
-        	[MC Surfaces, Inc].[dbo].reccln.clnnme,
-        	[MC Surfaces, Inc].[dbo].acrinv.jobnum,
-        	[MC Surfaces, Inc].[dbo].actrec.jobnme,
-        	[MC Surfaces, Inc].[dbo].actrec.usrdf2,
-        	[MC Surfaces, Inc].[dbo].acrinv.invdte,
-        	[MC Surfaces, Inc].[dbo].acrinv.invnum,
-        	[MC Surfaces, Inc].[dbo].acrinv.invttl,
-        	[MC Surfaces, Inc].[dbo].acrinv.entdte
-        	from [MC Surfaces, Inc].[dbo].acrinv
-        		left join [MC Surfaces, Inc].[dbo].actrec
-        			on [MC Surfaces, Inc].[dbo].acrinv.jobnum = [MC Surfaces, Inc].[dbo].actrec.recnum
-        		left join [MC Surfaces, Inc].[dbo].dptmnt
-        			on [MC Surfaces, Inc].[dbo].actrec.dptmnt = [MC Surfaces, Inc].[dbo].dptmnt.recnum
-        		left join [MC Surfaces, Inc].[dbo].reccln
-        			on [MC Surfaces, Inc].[dbo].actrec.clnnum = [MC Surfaces, Inc].[dbo].reccln.recnum
+        	[MCS INC].[dbo].actrec.dptmnt,
+        	[MCS INC].[dbo].dptmnt.dptnme,
+        	[MCS INC].[dbo].reccln.clnnme,
+        	[MCS INC].[dbo].acrinv.jobnum,
+        	[MCS INC].[dbo].actrec.jobnme,
+        	[MCS INC].[dbo].actrec.usrdf2,
+        	[MCS INC].[dbo].acrinv.invdte,
+        	[MCS INC].[dbo].acrinv.invnum,
+        	[MCS INC].[dbo].acrinv.invttl,
+        	[MCS INC].[dbo].acrinv.entdte
+        	from [MCS INC].[dbo].acrinv
+        		left join [MCS INC].[dbo].actrec
+        			on [MCS INC].[dbo].acrinv.jobnum = [MCS INC].[dbo].actrec.recnum
+        		left join [MCS INC].[dbo].dptmnt
+        			on [MCS INC].[dbo].actrec.dptmnt = [MCS INC].[dbo].dptmnt.recnum
+        		left join [MCS INC].[dbo].reccln
+        			on [MCS INC].[dbo].actrec.clnnum = [MCS INC].[dbo].reccln.recnum
         		where
-        			[MC Surfaces, Inc].[dbo].acrinv.status < 5
-        			and [MC Surfaces, Inc].[dbo].acrinv.invdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        			and [MC Surfaces, Inc].[dbo].acrinv.invdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
+        			[MCS INC].[dbo].acrinv.status < 5
+        			and [MCS INC].[dbo].acrinv.invdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        			and [MCS INC].[dbo].acrinv.invdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
                 order by
-                    [MC Surfaces, Inc].[dbo].actrec.dptmnt, [MC Surfaces, Inc].[dbo].reccln.clnnme, [MC Surfaces, Inc].[dbo].acrinv.jobnum;
+                    [MCS INC].[dbo].actrec.dptmnt, [MCS INC].[dbo].reccln.clnnme, [MCS INC].[dbo].acrinv.jobnum;
     """
 
     cursor.execute(sql)

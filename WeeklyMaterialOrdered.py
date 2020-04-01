@@ -93,37 +93,37 @@ def runQuery(date, directory, dsn):
     cursor = conn.cursor( )
     sql = """
         select
-        	[MC Surfaces, Inc].[dbo].pchord.ordnum,
-        	[MC Surfaces, Inc].[dbo].pchord.vndnum,
-        	[MC Surfaces, Inc].[dbo].actpay.vndnme,
-        	[MC Surfaces, Inc].[dbo].tkfprt.prtcls,
-        	[MC Surfaces, Inc].[dbo].prtcls.clsnme,
-        	[MC Surfaces, Inc].[dbo].pcorln.prtnum,
-        	[MC Surfaces, Inc].[dbo].pcorln.prtdsc,
-        	[MC Surfaces, Inc].[dbo].pcorln.linqty,
-        	[MC Surfaces, Inc].[dbo].pcorln.extttl,
-        	[MC Surfaces, Inc].[dbo].pchord.entdte,
-        	[MC Surfaces, Inc].[dbo].pchord.orddte,
-        	[MC Surfaces, Inc].[dbo].pchord.usrnme,
-            [MC Surfaces, Inc].[dbo].prtcls.parcls
-        	from [MC Surfaces, Inc].[dbo].pchord
-        		left join [MC Surfaces, Inc].[dbo].pcorln
-        			on [MC Surfaces, Inc].[dbo].pchord.recnum = [MC Surfaces, Inc].[dbo].pcorln.recnum
-        		left join [MC Surfaces, Inc].[dbo].tkfprt
-        			on [MC Surfaces, Inc].[dbo].pcorln.prtnum = [MC Surfaces, Inc].[dbo].tkfprt.recnum
-        		left join [MC Surfaces, Inc].[dbo].actpay
-        			on [MC Surfaces, Inc].[dbo].pchord.vndnum = [MC Surfaces, Inc].[dbo].actpay.recnum
-        		left join [MC Surfaces, Inc].[dbo].prtcls
-        			on [MC Surfaces, Inc].[dbo].tkfprt.prtcls = [MC Surfaces, Inc].[dbo].prtcls.recnum
+        	[MCS INC].[dbo].pchord.ordnum,
+        	[MCS INC].[dbo].pchord.vndnum,
+        	[MCS INC].[dbo].actpay.vndnme,
+        	[MCS INC].[dbo].tkfprt.prtcls,
+        	[MCS INC].[dbo].prtcls.clsnme,
+        	[MCS INC].[dbo].pcorln.prtnum,
+        	[MCS INC].[dbo].pcorln.prtdsc,
+        	[MCS INC].[dbo].pcorln.linqty,
+        	[MCS INC].[dbo].pcorln.extttl,
+        	[MCS INC].[dbo].pchord.entdte,
+        	[MCS INC].[dbo].pchord.orddte,
+        	[MCS INC].[dbo].pchord.usrnme,
+            [MCS INC].[dbo].prtcls.parcls
+        	from [MCS INC].[dbo].pchord
+        		left join [MCS INC].[dbo].pcorln
+        			on [MCS INC].[dbo].pchord.recnum = [MCS INC].[dbo].pcorln.recnum
+        		left join [MCS INC].[dbo].tkfprt
+        			on [MCS INC].[dbo].pcorln.prtnum = [MCS INC].[dbo].tkfprt.recnum
+        		left join [MCS INC].[dbo].actpay
+        			on [MCS INC].[dbo].pchord.vndnum = [MCS INC].[dbo].actpay.recnum
+        		left join [MCS INC].[dbo].prtcls
+        			on [MCS INC].[dbo].tkfprt.prtcls = [MCS INC].[dbo].prtcls.recnum
         		where
-        			[MC Surfaces, Inc].[dbo].pchord.vndnum != 1164
-                    and [MC Surfaces, Inc].[dbo].actpay.vndtyp != 201
-        			and [MC Surfaces, Inc].[dbo].pchord.status <= 4
-        			and [MC Surfaces, Inc].[dbo].pchord.orddte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        			and [MC Surfaces, Inc].[dbo].pchord.orddte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
-        			and [MC Surfaces, Inc].[dbo].pchord.entdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
-        			and [MC Surfaces, Inc].[dbo].pchord.entdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
-                order by [MC Surfaces, Inc].[dbo].pchord.usrnme, [MC Surfaces, Inc].[dbo].tkfprt.prtcls;
+        			[MCS INC].[dbo].pchord.vndnum != 1164
+                    and [MCS INC].[dbo].actpay.vndtyp != 201
+        			and [MCS INC].[dbo].pchord.status <= 4
+        			and [MCS INC].[dbo].pchord.orddte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        			and [MCS INC].[dbo].pchord.orddte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
+        			and [MCS INC].[dbo].pchord.entdte <= CAST(DATEADD(DAY, -1, GETDATE( )) as date)
+        			and [MCS INC].[dbo].pchord.entdte >= CAST(DATEADD(DAY, -6, (DATEADD(DAY, -1, GETDATE( )))) as date)
+                order by [MCS INC].[dbo].pchord.usrnme, [MCS INC].[dbo].tkfprt.prtcls;
     """
     cursor.execute(sql)
     tuples = list(cursor.fetchall( ))
@@ -182,7 +182,7 @@ def runQuery(date, directory, dsn):
     for on, vn, vnm, pc, cn, pn, pd, qty, ttl, ed, od, usr, prtcls in data:
         if ttl is None:
             ttl = 0
-            
+
         if user == '':
             user = usr
             userTotal += float(ttl)
